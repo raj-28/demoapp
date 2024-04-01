@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Application</title>
+</head>
+<body>
+    <h1>Frontend Application</h1>
+    <button id="getDataBtn">Get Data from Backend</button>
+    <div id="frontendData"></div>
+
+    <script>
+        function fetchDataFromBackend() {
+            const url = 'http://localhost:5000/data'; // Assuming backend is running on localhost:5000
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("frontendData").innerText = JSON.stringify(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+
+        document.getElementById("getDataBtn").addEventListener("click", fetchDataFromBackend);
+    </script>
+</body>
+</html>
